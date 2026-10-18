@@ -1,0 +1,71 @@
+{
+    "name":  "Knappen-Quiz – Fan-Projekt für Schalke 04",
+    "short_name":  "Knappen-Quiz",
+    "description":  "Inoffizielles Fan-Projekt von Schalke-Fans: Schalke-Wissen in 7 Spieltagen mit Quiz, Humor und Zertifikaten. Deutsch, English, Ruhrpott. Läuft auch offline.",
+    "id":  "/schalke04/",
+    "start_url":  "./",
+    "scope":  "./",
+    "display":  "standalone",
+    "display_override":  [
+                             "standalone",
+                             "minimal-ui"
+                         ],
+    "orientation":  "any",
+    "background_color":  "#ffffff",
+    "theme_color":  "#004d9d",
+    "lang":  "de",
+    "dir":  "ltr",
+    "categories":  [
+                       "sports",
+                       "entertainment"
+                   ],
+    "prefer_related_applications":  false,
+    "icons":  [
+                  {
+                      "purpose":  "any",
+                      "type":  "image/png",
+                      "sizes":  "192x192",
+                      "src":  "icon-192.png"
+                  },
+                  {
+                      "purpose":  "any",
+                      "type":  "image/png",
+                      "sizes":  "512x512",
+                      "src":  "icon-512.png"
+                  },
+                  {
+                      "purpose":  "maskable",
+                      "type":  "image/png",
+                      "sizes":  "512x512",
+                      "src":  "icon-maskable-512.png"
+                  }
+              ],
+    "shortcuts":  [
+                      {
+                          "url":  "./#lesson-boss",
+                          "description":  "Direkt in die Bossrunde",
+                          "name":  "Bossrunde",
+                          "icons":  [
+                                        {
+                                            "type":  "image/png",
+                                            "sizes":  "192x192",
+                                            "src":  "icon-192.png"
+                                        }
+                                    ],
+                          "short_name":  "Boss"
+                      },
+                      {
+                          "url":  "./#home",
+                          "description":  "Zur Übersicht mit deinen Zertifikaten",
+                          "name":  "Zertifikate",
+                          "icons":  [
+                                        {
+                                            "type":  "image/png",
+                                            "sizes":  "192x192",
+                                            "src":  "icon-192.png"
+                                        }
+                                    ],
+                          "short_name":  "Zertifikate"
+                      }
+                  ]
+}
