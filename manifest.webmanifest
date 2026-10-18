@@ -2,7 +2,7 @@
     "name":  "Knappen-Quiz – Fan-Projekt für Schalke 04",
     "short_name":  "Knappen-Quiz",
     "description":  "Inoffizielles Fan-Projekt von Wintzi und Nobbe: Schalke-Wissen in 7 Spieltagen mit Quiz, Humor und Zertifikaten. Deutsch, English, Ruhrpott. Läuft auch offline.",
-    "id":  "/schalke04/",
+    "id":  "/schalke/",
     "start_url":  "./",
     "scope":  "./",
     "display":  "standalone",

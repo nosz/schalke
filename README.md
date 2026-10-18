@@ -1,6 +1,6 @@
-**⚽ Live ansehen: [https://nosz.github.io/schalke04](https://nosz.github.io/schalke04)** (geplante Adresse, nach dem Hochladen prüfen)
+**⚽ Live ansehen: [https://nosz.github.io/schalke](https://nosz.github.io/schalke)**
 
-[![Knappen-Quiz: Was weißt du über Schalke 04? / What do you know about Schalke 04? / Wat weißte üben Schalke 04?](schalke_vorschau.jpg)](https://nosz.github.io/schalke04)
+[![Knappen-Quiz: Was weißt du über Schalke 04? / What do you know about Schalke 04? / Wat weißte üben Schalke 04?](schalke_vorschau.jpg)](https://nosz.github.io/schalke)
 
 # Knappen-Quiz: Schalke 04
 
@@ -8,7 +8,7 @@
 
 **Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.0, Stand 18.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
-> **Veröffentlichung:** GitHub-Repository `schalke04` (Benutzer `nosz`), Adresse `https://nosz.github.io/schalke04/` (Vorschlag, bitte bestätigen). Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image, `SHARE_URL`), in `manifest.webmanifest` (`id`) und in dieser README anpassen.
+> **Veröffentlichung:** GitHub-Repository `schalke` (Benutzer `nosz`), Adresse `https://nosz.github.io/schalke/` . Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image, `SHARE_URL`), in `manifest.webmanifest` (`id`) und in dieser README anpassen.
 
 ## Inhalt
 Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **Deutsch, Englisch und Ruhrpott** (Umschalter oben, wird gespeichert).
