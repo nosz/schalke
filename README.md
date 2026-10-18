@@ -4,7 +4,7 @@
 
 # Knappen-Quiz: Schalke 04
 
-**Inoffizielles Fan-Projekt von Schalke-Fans.** Gleiche Technik und gleicher Aufbau wie das Stammtisch-Quiz (FCBAYERN), Inhalte komplett neu.
+**Von Wintzi und Nobbe** (inoffizielles Fan-Projekt von Schalke-Fans). Der Hinweis „von Wintzi und Nobbe“ steht oben in der Kopfzeile unter dem Titel (alle drei Sprachen), in der Fußzeile der Startseite und auf jedem Zertifikat. Gleiche Technik und gleicher Aufbau wie das Stammtisch-Quiz (FCBAYERN), Inhalte komplett neu.
 
 **Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.0, Stand 18.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
