@@ -349,10 +349,24 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 .fcredit .fver{margin:14px 0 0}
 a.credit{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:12px 28px;border-radius:999px;border:2px solid #fff;background:linear-gradient(135deg,var(--red-d) 0%,var(--red) 100%);color:#fff;font-weight:800;font-size:1.08rem;letter-spacing:.2px;text-decoration:none;white-space:nowrap;max-width:100%;box-shadow:0 0 0 3px var(--gold),0 8px 22px rgba(0,0,0,.3);transition:transform .15s,filter .15s}
 @media(max-width:420px){a.credit{font-size:1rem;padding:12px 18px;gap:8px}}
+a.credit{gap:14px;min-height:64px;padding:10px 24px}
+a.credit .cr-tx{display:flex;flex-direction:column;align-items:flex-start;line-height:1.25;text-align:left}
+a.credit .cr-t{font-weight:800;font-size:1.08rem}
+a.credit .cr-u{font-weight:600;font-size:.8rem;text-decoration:underline;text-underline-offset:3px;opacity:.95}
+a.credit .cr-ic,a.credit .cr-ex{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);flex:none}
+a.credit:hover .cr-ex{background:rgba(255,255,255,.35)}
+@media(max-width:420px){a.credit{gap:10px;padding:10px 14px}a.credit .cr-t{font-size:1rem}a.credit .cr-u{font-size:.76rem}a.credit .cr-ic,a.credit .cr-ex{width:32px;height:32px}}
 a.credit .cr-st{color:var(--gold);font-size:1.2rem;line-height:1}
 a.credit .cr-ar{font-size:1.15rem;line-height:1}
 a.credit:hover{filter:brightness(1.12);transform:translateY(-2px)}
 a.credit:focus-visible{outline:3px solid #fff;outline-offset:4px;box-shadow:0 0 0 6px var(--red-d)}
+.btnsave{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:10px 26px;font-weight:800;font-size:1.05rem;letter-spacing:.2px;border-radius:999px;box-shadow:0 4px 0 rgba(0,0,0,.18),0 0 0 3px var(--gold);transition:background .2s,box-shadow .2s,opacity .2s}
+.btnsave .saveic{display:inline-flex}
+.btnsave:hover{filter:brightness(1.08)}
+.btnsave:disabled{opacity:.5;cursor:not-allowed;box-shadow:none;filter:grayscale(.35)}
+.btnsave.ready{animation:savepulse 1.6s ease-in-out infinite}
+.btnsave.saved{background:var(--ok);border-color:var(--ok);color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+@keyframes savepulse{0%,100%{box-shadow:0 4px 0 rgba(0,0,0,.18),0 0 0 3px var(--gold)}50%{box-shadow:0 4px 0 rgba(0,0,0,.18),0 0 0 8px rgba(255,200,61,.55)}}
 @media print{.fcredit{display:none}}
 </style>
 </head>
@@ -372,7 +386,7 @@ a.credit:focus-visible{outline:3px solid #fff;outline-offset:4px;box-shadow:0 0 
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.1.3", STAND = "23.10.2026";
+const VERSION = "1.1.4", STAND = "23.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["ruhr","RUHR","Ruhrpott"]];
 const KEY = "s04_knappen_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -399,7 +413,8 @@ const S = {
  nameQ:["Wie dürfen wir dich in der Kurve nennen?","What should we call you in the Kurve?","Wie sollen wir dich inne Kurve nennen?"],
  nameSub:["Für Begrüßung, Quiz und Zertifikat. Dein Name bleibt auf diesem Gerät.","For greetings, quiz and certificate. Your name stays on this device.","Für Begrüßung, Quiz und Zertifikat. Dein Name bleibt auf dem Gerät."],
  nameP2:["Dein Name oder Fan-Name","Your name or fan nickname","Dein Name oder Spitzname"],
- nameOk:["Das bin ich","That's me","Dat bin ich"],
+ nameOk:["Speichern","Save","Speichern"],
+ nameSaved:["Gespeichert","Saved","Gespeichert"],
  nameSkip:["Lieber anonym bleiben","Stay anonymous","Ich bleib lieber anonym"],
  nameChange:["Name ändern","Change name","Namen ändern"],
  nameAdd:["Name eintragen","Add your name","Namen eintragen"],
@@ -794,13 +809,17 @@ h("div", {class:"stats", role:"list"},
       LESSONS.some(earned) ? h("button", {type:"button", class:"namebtn", onclick:() => { const c = $("#ch"); if(c){ const rm = matchMedia("(prefers-reduced-motion: reduce)").matches; c.scrollIntoView({behavior: rm ? "auto" : "smooth", block:"start"}); } }}, h("span", {"aria-hidden":"true"}, "🏅"), h("span", null, h("span", {class:"bpre"}, t("certBtnPre")), t("certBtnMain"))) : null)));
   if((!hasName() && !ach.skip) || editName){
     const inp = h("input", {id:"nmq", type:"text", maxlength:"40", autocomplete:"given-name", placeholder:t("nameP2"), value:nm});
-    const done = v => { nm = v.trim().slice(0, 40); editName = false; ach.skip = !nm; save(); render(true); };
+    const done = v => { nm = v.trim().slice(0, 40); editName = false; ach.skip = !nm; save(); render(true); if(nm) snack(t("nameSaved") + ": " + fname(), null, null, 2600); };
     const form = h("form", {class:"nameq", "aria-labelledby":"nq"},
       h("label", {for:"nmq", id:"nq", text:"👋 " + t("nameQ")}), h("small", {text:t("nameSub")}), inp,
       h("div", {class:"row", style:"justify-content:flex-start;align-items:center;margin-top:8px;gap:6px 14px"},
-        h("button", {type:"submit", class:"btn"}, t("nameOk")),
+        h("button", {type:"submit", class:"btn btnsave"}, saveIcon(), h("span", {text:t("nameOk")})),
         h("button", {type:"button", class:"btn ghost", onclick:() => { editName = false; ach.skip = true; if(!hasName()) nm = ""; save(); render(true); }}, t("nameSkip"))));
     form.onsubmit = e => { e.preventDefault(); done(inp.value); };
+    /* Speichern-Knopf reagiert auf den Text im Feld: leer = grau (nichts zu speichern), geaendert = aktiv, goldener Ring pulsiert, unveraendert und gespeichert = gruen mit "Gespeichert" und Haken (Klick schliesst das Feld) */
+    const sb = form.querySelector(".btnsave"), sbt = sb.lastElementChild;
+    const updSave = () => { const v = inp.value.trim().slice(0, 40), saved = hasName() && v === nm.trim(), ready = v !== "" && !saved; sb.disabled = v === ""; sb.classList.toggle("ready", ready); sb.classList.toggle("saved", saved); sbt.textContent = saved ? t("nameSaved") + " âœ“" : t("nameOk"); };
+    inp.addEventListener("input", updSave); updSave();
     m.append(form);
     if(focusName){   // nur nach Klick auf Name aendern: Formular in den sichtbaren Bereich holen und Eingabefeld aktivieren
       focusName = false;
@@ -1204,6 +1223,11 @@ function render(keepScroll){
   else if(key !== lastKey){ focusMain(); }
   lastKey = key;
 }
+/* Symbole des Autoren-Knopfs: Kettenglied (Link) und Pfeil aus dem Kasten (externe Seite, oeffnet in neuem Tab) */
+const CRED_ICO = {link:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>', ext:'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/>'};
+function credIcon(k, cls){ const s = document.createElement("span"); s.className = cls; s.setAttribute("aria-hidden", "true"); s.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">' + CRED_ICO[k] + '</svg>'; return s; }
+/* Speichern-Knopf (Name): Diskettensymbol vor dem Text, damit klar ist, dass hier gespeichert wird */
+function saveIcon(){ const s = document.createElement("span"); s.className = "saveic"; s.setAttribute("aria-hidden", "true"); s.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>'; return s; }
 function chrome(){
   document.documentElement.lang = LANGS[li][0];
   document.title = t("title");
@@ -1218,7 +1242,7 @@ function chrome(){
       h("ul", {class:"srclist"}, sl.src.map(s => h("li", null, h("a", {href:s[1], rel:"noopener"}, s[0]))))) : null,
     view.v !== "home" ? h("div", {class:"fhome"}, h("button", {type:"button", class:"btn ghost", onclick:() => go("home")}, (() => { const s = h("span", {"aria-hidden":"true"}); s.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>'; return s; })(), h("span", {text:t("toHome")}))) : null,
     view.v === "home" ? h("div", {class:"fcard"}, h("span", {class:"fic", "aria-hidden":"true"}, "ℹ️"), h("div", null, h("p", {class:"fdisc", text:t("disc")}), h("p", {class:"ftrans", text:t("trans")}))) : null,
-    view.v === "home" ? h("div", {class:"fcredit"}, h("p", {class:"fver"}, h("span", {text:t("ver") + " " + VERSION})), h("a", {class:"credit", href:"https://nosz.github.io/norbert-szpak/", target:"_blank", rel:"noopener noreferrer"}, h("span", {class:"cr-st", "aria-hidden":"true"}, "✦"), h("span", {text:"Website Design by Norbert"}), h("span", {class:"cr-ar", "aria-hidden":"true"}, "↗"))) : null].filter(Boolean));   // Info und Version nur auf der ersten Seite
+    view.v === "home" ? h("div", {class:"fcredit"}, h("p", {class:"fver"}, h("span", {text:t("ver") + " " + VERSION})), h("a", {class:"credit", href:"https://nosz.github.io/norbert-szpak/", target:"_blank", rel:"noopener noreferrer", "aria-label":"Website Design by Norbert, nosz.github.io/norbert-szpak"}, credIcon("link", "cr-ic"), h("span", {class:"cr-tx"}, h("span", {class:"cr-t", text:"Website Design by Norbert"}), h("span", {class:"cr-u", text:"nosz.github.io/norbert-szpak"})), credIcon("ext", "cr-ex"))) : null].filter(Boolean));   // Info und Version nur auf der ersten Seite
 }
 $("#brand").onclick = () => {
   if(view.v === "home"){ const rm = matchMedia("(prefers-reduced-motion: reduce)").matches; window.scrollTo({top:0, behavior: rm ? "auto" : "smooth"}); $("#main").focus({preventScroll:true}); }
@@ -1892,8 +1916,8 @@ fromHash(); render();
   /* Auftritt 25: fragt nach dem Namen und zeigt auf das Eingabefeld (nur auf der Startseite, höchstens dreimal insgesamt) */
   function nameNudge(){
     const el = document.querySelector(".nameq") || document.querySelector(".herobar .namebtn"); if(!el) return;
-    const rm = matchMedia("(prefers-reduced-motion: reduce)").matches, r = el.getBoundingClientRect();
-    if(r.top < 70 || r.bottom > innerHeight - 20) el.scrollIntoView({behavior: rm ? "auto" : "smooth", block: "center"});
+    /* Die Seite scrollt NIE von selbst (Nutzer lesen weiter unten, ein automatischer Sprung nach oben verwirrt): das Feld pulsiert nur, wenn es gerade im sichtbaren Bereich liegt */
+    const r = el.getBoundingClientRect(); if(r.bottom < 0 || r.top > innerHeight) return;
     el.classList.remove("nudge"); void el.offsetWidth; el.classList.add("nudge"); setTimeout(() => el.classList.remove("nudge"), 4200);
   }
   /* Zielpunkt der Figur: oberer Rand des Namensfelds (oder des Knopfs "Name eintragen"); holt das Feld dafür sofort in den sichtbaren Bereich */
