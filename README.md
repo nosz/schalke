@@ -6,7 +6,7 @@
 
 **Von Wintzi und Nobbe** (inoffizielles Fan-Projekt von Schalke-Fans). Der Hinweis „von Wintzi und Nobbe“ steht oben in der Kopfzeile unter dem Titel (alle drei Sprachen), in der Fußzeile der Startseite und auf jedem Zertifikat. Gleiche Technik und gleicher Aufbau wie das Stammtisch-Quiz (FCBAYERN), Inhalte komplett neu.
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.1.2, Stand 23.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.1.3, Stand 23.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `schalke` (Benutzer `nosz`), Adresse `https://nosz.github.io/schalke/` . Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image, `SHARE_URL`), in `manifest.webmanifest` (`id`) und in dieser README anpassen.
 
@@ -45,6 +45,7 @@ Königsblau und Weiß mit kräftigen Überschriften, nach dem Auftritt von schal
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.1.3 (23.10.2026): Autoren-Hinweis im Fuß als auffälliger Knopf überarbeitet (ganzer Text ist der Link auf https://nosz.github.io/norbert-szpak/); Version angehoben, alle Tests und die Link-Pflicht-Prüfung erneut.
 - 1.1.2 (23.10.2026): Im Fuß steht jetzt „Website Design by Norbert“ statt „Created by Norbert“ (auffälliger Knopf unter der Version, der ganze Text ist der Link auf https://nosz.github.io/norbert-szpak/).
 - 1.1.1 (20.10.2026): Im Fuß der Startseite steht neben der Version statt des Datums der Link „Created by Norbert“ (gleiches Design, öffnet https://nosz.github.io/norbert-szpak in einem neuen Tab).
 - 1.1.0 (18.10.2026): Der kleine Bergarbeiter spricht jetzt in der oben im Menü eingestellten Sprache (Deutsch, Englisch oder Ruhrdeutsch, alle Texte in jeder Sprache; bei Sprachwechsel meldet er sich gleich neu) und lässt sich abschalten: Symbol ⛏️ in der Kopfzeile. **Teilen-Knopf überall und am auffälligsten:** Ergebnisseite, jede Zertifikat-Seite (auch Meister), Übersicht der Zertifikate und Lektionskarten; groß, gefüllt, ganz oben, mit dem Teilen-Symbol der Kopfzeile, „Nächster Spieltag“ darunter, „Als Bild speichern“ und „Drucken“ klein. Der Teilen-Text hängt vom Zertifikat ab, enthält das Ergebnis und den Link zur App. **Urkunde:** Sprache immer wie im Menü, Kasten „Das habe ich gewusst“ mit allen Fragen und richtigen Antworten (zu lange Texte werden kleiner und umbrochen), Fußzeile mit dem Hinweis steht im Rahmen und ist gut lesbar.
