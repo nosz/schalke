@@ -1,8 +1,8 @@
 {
-    "name":  "Knappen-Quiz – Fan-Projekt für Schalke 04",
-    "short_name":  "Knappen-Quiz",
-    "description":  "Inoffizielles Fan-Projekt von Wintzi und Nobbe: Schalke-Wissen in 7 Spieltagen mit Quiz, Humor und Zertifikaten. Deutsch, English, Ruhrpott. Läuft auch offline.",
-    "id":  "/schalke/",
+    "name":  "Zebra-Quiz – Fan-Projekt für den MSV Duisburg",
+    "short_name":  "Zebra-Quiz",
+    "description":  "Inoffizielles Fan-Projekt: MSV-Duisburg-Wissen in 7 Spieltagen mit Quiz, Markus-Witzen und Zertifikaten. Deutsch, English, Ruhrpott. Läuft auch offline.",
+    "id":  "/msvduisburg/",
     "start_url":  "./",
     "scope":  "./",
     "display":  "standalone",
@@ -12,7 +12,7 @@
                          ],
     "orientation":  "any",
     "background_color":  "#ffffff",
-    "theme_color":  "#004d9d",
+    "theme_color":  "#26357a",
     "lang":  "de",
     "dir":  "ltr",
     "categories":  [
@@ -43,7 +43,7 @@
     "shortcuts":  [
                       {
                           "url":  "./#lesson-boss",
-                          "description":  "Direkt in die Bossrunde",
+                          "description":  "Inoffizielles Fan-Projekt: MSV-Duisburg-Wissen in 7 Spieltagen mit Quiz, Markus-Witzen und Zertifikaten. Deutsch, English, Ruhrpott. Läuft auch offline.",
                           "name":  "Bossrunde",
                           "icons":  [
                                         {
@@ -56,7 +56,7 @@
                       },
                       {
                           "url":  "./#home",
-                          "description":  "Zur Übersicht mit deinen Zertifikaten",
+                          "description":  "Inoffizielles Fan-Projekt: MSV-Duisburg-Wissen in 7 Spieltagen mit Quiz, Markus-Witzen und Zertifikaten. Deutsch, English, Ruhrpott. Läuft auch offline.",
                           "name":  "Zertifikate",
                           "icons":  [
                                         {

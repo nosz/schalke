@@ -1,10 +1,10 @@
-/* Knappen-Quiz - Service Worker. VERSION muss mit VERSION in index.html uebereinstimmen. */
-const VERSION = "1.1.4";
-const CACHE = "schalke-knappen-" + VERSION;
+/* Zebra-Quiz - Service Worker. VERSION muss mit VERSION in index.html uebereinstimmen. */
+const VERSION = "1.0.1";
+const CACHE = "msvduisburg-zebra-" + VERSION;
 const CORE = ["./", "index.html", "manifest.webmanifest"];
-const OPTIONAL = ["favicon.png", "favicon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "schalke_vorschau.jpg"];
+const OPTIONAL = ["favicon.png", "favicon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "msvduisburg_vorschau.jpg"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE).then(() => Promise.allSettled(OPTIONAL.map(u => c.add(u)))))); });
-self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(n => n.startsWith("schalke-knappen-") && n !== CACHE).map(n => caches.delete(n)))).then(() => self.clients.claim())); });
+self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(n => n.startsWith("msvduisburg-zebra-") && n !== CACHE).map(n => caches.delete(n)))).then(() => self.clients.claim())); });
 self.addEventListener("message", e => { if(e.data === "SKIP_WAITING") self.skipWaiting(); });
 const timeout = (p, ms) => new Promise((res, rej) => { const t = setTimeout(() => rej(new Error("timeout")), ms); p.then(v => { clearTimeout(t); res(v); }, e => { clearTimeout(t); rej(e); }); });
 self.addEventListener("fetch", e => {
